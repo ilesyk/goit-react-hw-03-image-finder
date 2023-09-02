@@ -1,7 +1,14 @@
 export const Searchbar = ({ onSubmit }) => {
+  const onSearch = evt => {
+    evt.preventDefault();
+    const value = evt.currentTarget.elements.query.value;
+    if (value !== '') {
+      return onSubmit(value);
+    }
+  };
   return (
     <header className="Searchbar">
-      <form className="Searchbar" onClick={evt => onSubmit(evt)}>
+      <form className="Searchbar" onClick={evt => onSearch(evt)}>
         <button type="submit" className="SearchForm-button">
           <span className="button-label">Search</span>
         </button>
